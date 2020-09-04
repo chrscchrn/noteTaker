@@ -17,7 +17,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 //Maybe Notes Array
 const db = require("./db/db.json");
 
