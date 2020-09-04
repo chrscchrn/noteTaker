@@ -2,11 +2,16 @@
   {
     "title": "This is a note!",
     "text": "Have a good day!",
-    "id": 4
+    "id": 0
   },
   {
     "title": "README",
     "text": "You have to refresh the page for the new notes to be added!",
-    "id": 4
+    "id": 1
+  },
+  {
+    "title": "Test",
+    "text": "Testing Pease!",
+    "id": 2
   }
 ]

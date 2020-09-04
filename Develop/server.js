@@ -53,11 +53,9 @@ app.post("/api/notes", (req, res) => {
             if (err) throw err;
         });
     });
-    
 });
 
 //Delete note
-
 app.delete('/api/notes/:id', (req, res) => {
     fs.readFile('db/db.json',(err, data) => {
         // Check for error

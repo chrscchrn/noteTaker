@@ -59,7 +59,8 @@ const handleNoteSave = function () {
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
-  });
+  }).catch((err) => console.log("err on catch"));
+  
 };
 
 // Delete the clicked note
