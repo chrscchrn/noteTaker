@@ -58,27 +58,27 @@ app.post("/api/notes", (req, res) => {
 });
 
 //Delete note
-app.get("/api/notes/:id", (req, res) => {
-    app.delete('/api/notes/:id', (req, res) => {
-        fs.readFile('db/db.json',(err, data) => {
+
+app.delete('/api/notes/:id', (req, res) => {
+    fs.readFile('db/db.json',(err, data) => {
+        // Check for error
+        if (err) throw err;
+        let deleteId = req.params.id;
+
+        // Handle data gathering for json update
+        let readData = JSON.parse(data);
+        for (let i in readData) (readData[i].id == deleteId) ? readData.splice(i, 1): null;
+        
+        // Write updated json to array 
+        fs.writeFile('db/db.json', JSON.stringify(readData, null, 2), (err) => {
+
             // Check for error
             if (err) throw err;
-            let deleteId = req.params.id;
-
-            // Handle data gathering for json update
-            let readData = JSON.parse(data);
-            for (let i in readData) (readData[i].id == deleteId) ? readData.splice(i, 1): null;
-            
-            // Write updated json to array 
-            fs.writeFile('db/db.json', JSON.stringify(json, null, 2), (err) => {
-
-                // Check for error
-                if (err) throw err;
-                res.send('200');
-            });
+            res.send('200');
         });
-    })
-});
+    });
+})
+
 
 // Starts the server to begin listening
 // ==============================================

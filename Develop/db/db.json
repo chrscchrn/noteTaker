@@ -1,32 +1,12 @@
 [
   {
-    "title": "wq",
-    "text": "w",
-    "id": 1
-  },
-  {
-    "title": "fhjk;",
-    "text": "fhjkl",
-    "id": 1
-  },
-  {
-    "title": "fhjk;",
-    "text": "fhjkl",
-    "id": 2
-  },
-  {
-    "title": "fhjk;",
-    "text": "fhjkl",
-    "id": 3
-  },
-  {
-    "title": "fhjk;",
-    "text": "fhjkl",
+    "title": "This is a note!",
+    "text": "Have a good day!",
     "id": 4
   },
   {
-    "title": "sd",
-    "text": "sd",
-    "id": 5
+    "title": "README",
+    "text": "You have to refresh the page for the new notes to be added!",
+    "id": 4
   }
 ]
