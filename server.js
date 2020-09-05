@@ -8,7 +8,7 @@ const fs = require("fs");
 const app = express();
 
 //receive js and CSS files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use(express.static('./'));
 
 //MiddleWare for POSTing
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Maybe Notes Array
-const db = require("./db/db.json");
+const db = require("./Develop/db/db.json");
 
 //global variables
 let id = db.length;
@@ -27,17 +27,17 @@ let newNotes = [];
 // Routes
 //===================================================
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
+    res.sendFile(path.join(__dirname, "./Develop/public/index.html"));
 });
 
 // View Notes
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
+    res.sendFile(path.join(__dirname, "./Develop/public/notes.html"));
 });
 
 // Display Notes link
 app.get("/api/notes", (req, res) => {
-    fs.readFile('db/db.json', 'utf8', (err, contents) => {
+    fs.readFile('Develop/db/db.json', 'utf8', (err, contents) => {
         var words = JSON.parse(contents);
         res.send(words);
     });
@@ -47,9 +47,9 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
     req.body.id = parseInt(id);
     id++;
-    fs.readFile('./db/db.json', 'utf8', (err, contents) => {
+    fs.readFile('./Develop/db/db.json', 'utf8', (err, contents) => {
         newNotes = JSON.stringify([...JSON.parse(contents), req.body], null, 2);
-        fs.writeFile('./db/db.json', newNotes, (err) => {
+        fs.writeFile('./Develop/db/db.json', newNotes, (err) => {
             if (err) throw err;
         });
     });
@@ -57,7 +57,7 @@ app.post("/api/notes", (req, res) => {
 
 //Delete note
 app.delete('/api/notes/:id', (req, res) => {
-    fs.readFile('db/db.json',(err, data) => {
+    fs.readFile('Develop/db/db.json',(err, data) => {
         // Check for error
         if (err) throw err;
         let deleteId = req.params.id;
@@ -67,7 +67,7 @@ app.delete('/api/notes/:id', (req, res) => {
         for (let i in readData) (readData[i].id == deleteId) ? readData.splice(i, 1): null;
         
         // Write updated json to array 
-        fs.writeFile('db/db.json', JSON.stringify(readData, null, 2), (err) => {
+        fs.writeFile('Develop/db/db.json', JSON.stringify(readData, null, 2), (err) => {
 
             // Check for error
             if (err) throw err;
