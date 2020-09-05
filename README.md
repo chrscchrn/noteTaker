@@ -26,7 +26,9 @@
     N/A
 
 ### Screenshots
-
+[home](screenshots/home.png)
+[notes](screenshots/notes.png)
 
 ### Link to Website
 
+[Here](http://nameless-wave-47105.herokuapp.com/)
